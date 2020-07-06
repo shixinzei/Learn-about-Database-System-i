@@ -1,0 +1,93 @@
+1.   out  ÐÍ
+
+DELIMITER //  
+
+CREATE PROCEDURE proc1(OUT s  int) 
+BEGIN
+SELECT COUNT(*) INTO s FROM factory.spj;
+END
+ //  
+DELIMITER ; 
+
+
+
+SET @s=1; 
+CALL proc1(@s);  
+select @s
+
+
+2.   in ÐÍ
+DELIMITER //  
+   CREATE PROCEDURE proc2(IN p_in int)  
+   BEGIN   
+        SELECT p_in;   
+        SET p_in=2;   
+       SELECT p_in;   
+  END;   
+ //  DELIMITER ;
+
+ SET @p_in=1; 
+CALL proc2(@p_in);  
+
+
+3.  inout ÐÍ
+DELIMITER //   
+    CREATE PROCEDURE proc3(INOUT p_inout int)   
+    BEGIN 
+        SELECT p_inout;  
+        SET p_inout=2;  
+        SELECT p_inout;   
+   END;  
+//    DELIMITER ; 
+
+
+delimiter //
+CREATE   FUNCTION      hello (s CHAR(20))      RETURNS    CHAR(50)
+ RETURN CONCAT('Hello, ',s,'!');
+ //delimiter 
+
+SELECT hello('world');
+
+
+select name from mysql.proc where db='university'
+
+
+
+
+CREATE PROCEDURE sp1 (x VARCHAR(5))
+BEGIN
+DECLARE xname VARCHAR(5) DEFAULT 'bob';
+DECLARE newname VARCHAR(5);
+DECLARE xid INT;
+
+
+SELECT xname,id INTO newname,xid
+FROM table1 WHERE xname = xname;
+
+SELECT newname;
+END;
+
+
+CREATE PROCEDURE doiterate(p1 INT)
+BEGIN
+label1: LOOP
+SET p1 = p1 + 1;
+IF p1 < 10 THEN ITERATE label1; 
+END IF;
+LEAVE label1;
+END LOOP label1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,36 @@
+connect 'jdbc:derby:university; create=true';
+
+CREATE TABLE Student          
+	      (Sno   CHAR(9) PRIMARY KEY,
+            Sname  CHAR(20) UNIQUE,  
+            Ssex    CHAR(2),
+            Sage   SMALLINT,
+            Sdept  CHAR(20));
+ 
+CREATE TABLE  Course
+               ( Cno   CHAR(4) PRIMARY KEY,
+                 Cname  CHAR(40),            
+                 Cpno   CHAR(4),
+                 Ccredit  SMALLINT,
+                FOREIGN KEY (Cpno) REFERENCES  Course(Cno));
+
+CREATE TABLE  SC
+       	(Sno  CHAR(9), 
+       	Cno  CHAR(4),  
+       	Grade    SMALLINT,
+       	PRIMARY KEY (Sno,Cno),
+       	FOREIGN KEY (Sno) REFERENCES Student(Sno),
+       	FOREIGN KEY (Cno) REFERENCES Course(Cno));
+
+insert into Student values('200215121','LiYong','M',20,'CS');
+insert into Student values('200215122','LiuChen','F',19,'IS');
+insert into Student values('200215123','WangMin','F',18,'MA');
+insert into Student values('200215125','ZhangLi','M',19,'IS');
+
+insert into Course(Cno,Cname,Ccredit)values('1','Êý¾Ý¿â',4);
+
+insert into SC values('200215121','1',92);
+insert into SC values('200215121','2',85);
+insert into SC values('200215121','3',88);
+insert into SC values('200215122','2',90);
+insert into SC values('200215122','3',80);

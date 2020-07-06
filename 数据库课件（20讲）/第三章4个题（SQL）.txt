@@ -1,0 +1,31 @@
+3)
+  select sno from SPJ
+     where JNO='J1' 
+     and pno in 
+       (select pno in 
+           (select pno 
+               from P
+               where color='ºì') 
+   
+4£©
+select JNO  from J
+ where not exists
+   (select * from SPJ, S, P
+      where SPJ.JNO=J.JNO 
+      and  SPJ.SNO=S.SNO
+      and  SPJ.PNO=P.PNO
+      and  S.CITY='Ìì½ò'
+      and  P.COLOR='ºì'£©
+
+
+5£©
+ select distinct JNO
+   from SPJ, SPJZ
+   where NOT EXISTS
+      (select * from SPJ,SPJX
+          where SNO='S1¡¯
+          and NOT EXISTS
+          £¨select * from SPJ,SPJY
+              where SPJ.PNO=SPJX.PNO
+              and SPJ.JNO=SPJZ.JNO£©         
+    
